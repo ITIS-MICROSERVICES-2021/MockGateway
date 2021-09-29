@@ -4,6 +4,8 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
+using MockGateway.Interfaces;
+using MockGateway.Services;
 
 namespace MockGateway
 {
@@ -19,6 +21,7 @@ namespace MockGateway
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddTransient<IExternalUserService, ExternalUserService>();
             services.AddControllers();
             services.AddSwaggerGen(c =>
             {
