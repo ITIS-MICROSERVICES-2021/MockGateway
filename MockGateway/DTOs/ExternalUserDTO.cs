@@ -2,7 +2,7 @@
 
 namespace MockGateway.DTOs
 {
-    public record ExternalUserDto
+    public record ExternalUserDTO
     {
         public string Surname { get; init; }
         public string Name { get; init; }
