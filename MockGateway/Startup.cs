@@ -27,8 +27,8 @@ namespace MockGateway
             services.AddTransient<IRedisService, RedisService>();
             services.AddStackExchangeRedisExtensions<MsgPackObjectSerializer>(new RedisConfiguration
             {
-                ConnectionString = "localhost:6379",
-                Database = 1
+                ConnectionString = "127.0.0.1:6379",
+                Database = 0
             });
             services.AddControllers();
             services.AddSwaggerGen(c =>
