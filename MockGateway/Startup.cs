@@ -6,6 +6,8 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
 using MockGateway.Interfaces;
 using MockGateway.Services;
+using StackExchange.Redis.Extensions.Core.Configuration;
+using StackExchange.Redis.Extensions.MsgPack;
 
 namespace MockGateway
 {
@@ -22,6 +24,12 @@ namespace MockGateway
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddTransient<IExternalUserService, ExternalUserService>();
+            services.AddTransient<IRedisService, RedisService>();
+            services.AddStackExchangeRedisExtensions<MsgPackObjectSerializer>(new RedisConfiguration
+            {
+                ConnectionString = "localhost:6379",
+                Database = 1
+            });
             services.AddControllers();
             services.AddSwaggerGen(c =>
             {
