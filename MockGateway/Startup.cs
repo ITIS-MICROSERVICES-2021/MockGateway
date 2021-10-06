@@ -24,6 +24,7 @@ namespace MockGateway
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddTransient<IExternalUserService, ExternalUserService>();
+            services.AddTransient<IRedisService, RedisService>();
             services.AddStackExchangeRedisExtensions<MsgPackObjectSerializer>(new RedisConfiguration
             {
                 ConnectionString = "localhost:6379",
