@@ -7,8 +7,10 @@ namespace MockGateway.Services
 {
     public class ExternalUserService : IExternalUserService
     {
-        public async Task<ExternalUserDTO> GetExternalUser()
+        public async Task<ExternalUserDTO> GetExternalUser(int id)
         {
+            if (id != 100)
+                return null;
             return new ExternalUserDTO
             {
                 Surname = "Иванов",

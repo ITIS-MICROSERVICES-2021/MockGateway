@@ -5,6 +5,6 @@ namespace MockGateway.Interfaces
 {
     public interface IExternalUserService
     {
-        Task<ExternalUserDTO> GetExternalUser();
+        Task<ExternalUserDTO> GetExternalUser(int id);
     }
 }

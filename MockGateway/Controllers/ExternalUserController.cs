@@ -16,10 +16,11 @@ namespace MockGateway.Controllers
         }
 
         [HttpGet]
-        public async Task<IActionResult> Get()
+        [Route("{id:int}")]
+        public async Task<IActionResult> Get(int id)
         {
-            var result = await ExternalUserService.GetExternalUser();
-            return Ok(result);
+            var result = await ExternalUserService.GetExternalUser(id);
+            return result == null ? NotFound() : Ok(result);
         }
     }
 }
